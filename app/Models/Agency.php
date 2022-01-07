@@ -10,4 +10,6 @@ class Agency extends Model
     use HasFactory;
 
     protected $guarded;
+    protected $fillable = ['name', 'vat_number', 'bpn_number', 'location', 'cell', 'email'];
+
 }

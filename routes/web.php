@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgentController;
 use Illuminate\Support\Facades\Route;
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\ClientController;
@@ -19,12 +20,20 @@ use App\Http\Controllers\StoreImageController;
 */
 
 
-// route to get property details
+//--------------- route to get property details --------------------------------------------------
 
 Route::get('propertyy', [PropertyController::class, 'index']);
+Route::get('tryy', [PropertyController::class, 'try']);
 Route::get('add-property', [PropertyController::class, 'create']);
 Route::post('add-property', [PropertyController::class, 'store']);
 
+
+//----------------- route to get agent details----------------------------------------------------
+
+Route::get('agent', [AgentController::class, 'index']);
+Route::get('add-agent', [AgentController::class, 'create']);
+
+//-----------------------------------END Agent Details--------------------------------------------
 
 Route::get('/', function () {
     return view('welcome');

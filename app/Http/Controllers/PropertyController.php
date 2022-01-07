@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Property;
+use App\Models\PropertyType;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -12,11 +13,18 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function try()
+    {
+        $property = Property::all();
+       return view('property.try', compact('property'));
+        // return view('Property.index');
+    }
     public function index()
     {
         
         $property = Property::all();
-        return view('Property.index');
+        return view('Property.index', compact('property'));
         // return view('Property.index');
     }
 
@@ -27,7 +35,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view('property.create');
+        return view('property.create', ['property_types' => PropertyType::all(), ]);
     }
 
     /**
@@ -42,7 +50,7 @@ class PropertyController extends Controller
         $property = new Property;
         $property->description=$request->input('Description');
         $property->location=$request->input('location');
-        $property->type_id=$request->input('type-id');
+        $property->type_id=$request->input('type_id');
         $property->agency_id=$request->input('agency_id');
         $property->price=$request->input('price');
 

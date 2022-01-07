@@ -54,8 +54,8 @@
                                 <td>{{ $item->location }}</td>
                                 <td>{{ $item->price }}</td>
                                 <td>{{ $item->images }}</td>
-                                <td>{{ $item->agency_id }}</td>
-                                <td>{{ $item->type_id }}</td>
+                                <td>{{ $item->agency->name }}</td>
+                                <td>{{ $item->property_type->type }}</td>
                                 {{-- <td>{{ $item->section }}</td> --}}
                                 <td>
                                     <a href="" class="btn btn-primary btn-sm">Edit</a>
@@ -75,9 +75,14 @@
                         @foreach ($property as $item)
                         <div class="col-lg-4 col-md-4 col-xs-4 thumb">
                             <a class="thumbnail" href="#">
-                                <img class="img-responsive" src="{{ assets('uploads/property/' . $item->images) }}" alt="">
+                                <img class="img-responsive" src="{{ asset('uploads/property/' . $item->images) }}" alt="">
                             </a>
                             <h4>{{ $item->Description }}</h4>
+                            <h4>{{ $item->price }}</h4>
+                            <h4>{{ $item->price }}</h4>
+                            {{-- <h4>{{ $item->property_type->type }}</h4> --}}
+                            <h4>{{ $item->agency->name }}</h4>
+                            {{-- <h4>{{ $item->images }}</h4> --}}
                         </div>
                         @endforeach
                         

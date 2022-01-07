@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agency;
 use App\Models\Agent;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class AgentController extends Controller
      */
     public function index()
     {
-        //
+        return view('agent.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class AgentController extends Controller
      */
     public function create()
     {
-        //
+        return view('agent.create', ['agencies'=> Agency::all(),]);
     }
 
     /**

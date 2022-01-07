@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="col-lg-8 mx-auto">
-                <p class="text-faded mb-5">Welcome to Real Estate Management kindly select your profile</p><a class="btn btn-primary btn-xl" role="button" href="register">cLIENT&nbsp;</a><a class="btn btn-primary btn-xl" role="button" href="#services">AGENCY</a>
+                <p class="text-faded mb-5">Welcome to Real Estate Management kindly select your profile</p><a class="btn btn-primary btn-xl" role="button" href="tryy">cLIENT&nbsp;</a><a class="btn btn-primary btn-xl" role="button" href="{{url('agent')}}">AGENCY</a>
             </div>
         </div>
     </header>
