@@ -76,6 +76,11 @@ class PropertyController extends Controller
         //
     }
 
+    // public function addCart(Request $request)
+    // {
+    //     $items->put('products', $request);
+    // }
+
     /**
      * Show the form for editing the specified resource.
      *

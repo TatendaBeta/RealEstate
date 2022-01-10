@@ -15,13 +15,8 @@ class CreateWaitingListsTable extends Migration
     {
         Schema::create('waiting_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('surname');
-            $table->string('cell');
-            $table->string('nationalId');
-            $table->foreignId('property_id');
-            $table->foreignId('agency_id');
-            $table->foreignId('agent_id');
+            $table->foreignId('property_id')->constrained('properties');
+            $table->foreignId('client_id')->constrained('clients');
             $table->timestamps();
         });
     }

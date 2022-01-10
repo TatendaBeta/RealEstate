@@ -35,7 +35,8 @@ class WaitingListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client_details = $request->all();
+        dd($client_details);
     }
 
     /**

@@ -6,7 +6,7 @@ use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\StoreImageController;
-
+use App\Http\Controllers\WaitingListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +35,6 @@ Route::get('add-agent', [AgentController::class, 'create']);
 
 //-----------------------------------END Agent Details--------------------------------------------
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
@@ -49,6 +45,11 @@ Route::resource('/client', ClientController::class);
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/waitlist', [WaitingListController::class, 'store']);
+});
+
 
 // Route::get('register', [RegisterControllerArgumentLocatorsPass::class, 'index']);
 

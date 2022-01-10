@@ -20,7 +20,7 @@ class CreateClientsTable extends Migration
             $table->string('email');
             $table->string('cell');
             $table->string('sex');
-            $table->foreignId('property_id');
+            $table->foreignId('property_id')->constrained('properties');
             $table->string('nationalId');
             $table->timestamps();
         });
