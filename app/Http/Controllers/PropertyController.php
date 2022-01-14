@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agency;
 use App\Models\Property;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        return view('property.create', ['property_types' => PropertyType::all(), ]);
+        return view('property.create', ['property_types' => PropertyType::all(), 'agenciess' => Agency::all() ]);
     }
 
     /**

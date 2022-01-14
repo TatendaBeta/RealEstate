@@ -36,6 +36,14 @@ Route::get('add-agent', [AgentController::class, 'create']);
 //-----------------------------------END Agent Details--------------------------------------------
 
 
+
+
+//-----------------------------------Add to Waiting List--------------------------------------------------
+Route::get('add_toList', [PropertyController::class, 'create']);
+Route::post('add_toList', [PropertyController::class, 'store']);
+//-----------------------------------Add to Waiting List--------------------------------------------------
+
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
@@ -49,6 +57,8 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/waitlist', [WaitingListController::class, 'store']);
 });
+
+Route::get('index', [WaitingListController::class, 'index']);
 
 
 // Route::get('register', [RegisterControllerArgumentLocatorsPass::class, 'index']);

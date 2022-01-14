@@ -33,7 +33,13 @@
 
                             <div class="form-group mb-3">
                                 <label for="">Agency</label>
-                                <input type="text" name="agency_id" class="form-control">
+                                {{-- <input type="text" name="agency_id" class="form-control"> --}}
+                                <select name="agency_id" class="form-control">
+                                    @foreach ($agenciess as $item)
+                                       <option value="{{$item->id}}">{{$item->name}}</option> 
+                                    @endforeach
+                                </select>
+
                             </div>
                             <div class="form-group mb-3">
                                 <label for="">Description</label>

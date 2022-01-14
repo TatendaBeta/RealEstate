@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\WaitingList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use TCG\Voyager\Models\User;
 
 class WaitingListController extends Controller
 {
@@ -14,7 +16,8 @@ class WaitingListController extends Controller
      */
     public function index()
     {
-        //
+        $waitinglist = WaitingList::all();
+        return view('WaitingList.index', compact('waitinglist'), ['users'=>User::all(), 'waitinglists'=>WaitingList::all() ]);
     }
 
     /**
@@ -35,8 +38,29 @@ class WaitingListController extends Controller
      */
     public function store(Request $request)
     {
-        $client_details = $request->all();
-        dd($client_details);
+        $client_details = Auth::user();
+        // dd($client_details->id);
+        // dd($request);
+
+        // $table->foreignId('property_id')->constrained('properties');
+        // $table->foreignId('client_id')->constrained('clients');
+
+        $data=new WaitingList;
+        $data->property_id = $request->input('property_id');
+        $data->client_id = $client_details->id;
+        if($data->save()){
+            return redirect('tryy')->withMessage('Added to Waiting List');
+            
+        }
+        else{
+            
+            return redirect('tryy')->withMessage('Failed to add to Waiting List');
+        }
+
+
+
+
+
     }
 
     /**

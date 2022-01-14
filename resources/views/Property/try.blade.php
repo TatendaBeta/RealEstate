@@ -8,7 +8,8 @@
 
     <link rel='stylesheet' type='text/css'
         href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,400italic'>
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -192,20 +193,31 @@ http://www.templatemo.com/tm-478-accord
 
                                                 <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-4">
                                                     <div class="bottom-img">
-                                                        <form action="waitlist" method="post">
-                                                            @csrf
-                                                            <a href=""><img 
-                                                                    src="{{ asset('uploads/property/' . $item->images) }}"
-                                                                    alt="Image" width="50px" height="175px" ></a>
-                                                          <a href="">  <p class="first">{{ $item->location }}
-                                                            ${{ $item->price }}<i class="fa fa-cart-arrow-down" aria-hidden="true" style="margin-left:70px"></i></p></a>
-                                                                
-                                                        </form>
+                                                        <a href=""><img
+                                                                src="{{ asset('uploads/property/' . $item->images) }}"
+                                                                alt="Image" width="50px" height="175px"></a>
+
+                                                        <a href="#" data-toggle="modal" data-target="#{{$item->id}}"
+                                                            data-properyid={{ $item->id }}>
+                                                            <p class="first">{{ $item->location }}
+                                                                ${{ $item->price }}<i class="fa fa-cart-arrow-down"
+                                                                    aria-hidden="true" style="margin-left:60px"></i>
+                                                            </p>
+                                                        </a>
+
+                                                        <input name="property_id" id="property_id"
+                                                            value="{{ $item->id }}" type="hidden" />
+
                                                     </div>
                                                     <br>
-                                                </div>
+                                                
 
+                                                <!-- Obatinng Modal component -->
 
+                                                 @include('Property.modal', ['item' => $item])
+                                                 
+                                               {{-- end of Modal --}}
+                                            </div>
                                             @endforeach
                                         </div>
                                         {{-- <i class="fa fa-cart-arrow-down" aria-hidden="true"></i> --}}
@@ -232,10 +244,12 @@ http://www.templatemo.com/tm-478-accord
             </footer> <!-- .row -->
         </div> <!-- .container -->
     </div> <!-- .main-body -->
-
+    
     <!-- JavaScript -->
     <script src="assets/js/jquery-1.11.3.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
+
+
 
 </body>
 
